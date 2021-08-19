@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ajax动态获取数据demo</title>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<script src="https://unpkg.com/vue@2.6.14/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+		<!-- import JavaScript -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<template>
+				<el-table ref="multipleTable" :data="tableData" border style="width: 100%;"
+					highlight-current-row>
+					<el-table-column fixed type="selection" width="55" align="center">
+					</el-table-column>
+					<el-table-column prop="id" label="编号" width="50" align="center">
+					</el-table-column>
+					<el-table-column prop="name" label="姓名" width="300" align="center">
+					</el-table-column>
+					<el-table-column prop="codeName" label="权限标识" width="180" align="center">
+					</el-table-column>
+					<el-table-column prop="actionPath" label="操作路径" align="center">
+					</el-table-column>
+					<el-table-column prop="flag" label="类型" align="center">						
+							<template slot-scope="scope">
+								<div v-if="scope.row.flag=='D'">目录</div>
+								<div v-else-if="scope.row.flag=='M'">菜单</div>
+								<div v-else>操作</div>
+							</template>
+					</el-table-column>
+					<el-table-column label="操作" width="100" align="center">
+						<template slot-scope="scope">
+							<el-button @click="edit(scope.row)" type="text" size="small">编辑</el-button>
+							<el-button @click.native.prevent="del(scope.row,scope.$index, tableData)" type="text" size="small">删除</el-button>
+						</template>
+					</el-table-column>
+				</el-table>
+				<br />
+				<el-pagination 
+				background 
+				layout="prev, pager, next, sizes" 
+				:total="total" 
+				@size-change="handleSizeChange" 
+				@current-change="handleCurrentChange"
+				:page-sizes="[5, 10, 15, 20]"
+				:page-size="pageSize">
+				</el-pagination>
+				
+			</template>
+		</div>
+	</body>
+	<script>
+		
+		var app = new Vue({
+			el: '#app',
+			data: {
+				dialogFormVisible:false,
+				tableData:[],
+				multipleSelection: [],
+				page:1,
+				pageSize:5,
+				total:40
+			},
+			created: function(){
+				// 组件创建完后获取数据，
+				// 此时 data 已经被 observed 了
+				//初始化tableData属性的数据
+				this.getData(this.page,this.pageSize);
+			},
+			methods: {
+				edit: function(obj) {
+					this.$notify({
+						title: '编辑内容',
+						type: 'success',
+						message: obj,
+						duration: 5000
+					})
+				},
+				del: function(obj,index,rows) {
+					this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+						confirmButtonText: '确定',
+						cancelButtonText: '取消',
+						type: 'warning'
+					}).then(() => {		
+						console.log(obj);
+						rows.splice(index,1);
+						this.$message({
+							type: 'success',
+							message: '删除成功!'
+						});
+					}).catch(() => {
+						this.$message({
+							type: 'info',
+							message: '已取消删除'
+						});
+					});
+				},
+				handleCurrentChange(val) {
+					//更新page属性的数据
+					this.$data.page = val;
+					//重新获取数据
+					this.getData(this.page,this.pageSize);
+				},
+				handleSizeChange(val) {
+					//更新pageSize属性的数据
+					this.$data.pageSize = val;
+					//重新获取数据
+					this.getData(this.page,this.pageSize);
+				},
+				getData(page,limit){
+					var that = this;
+					axios.get('http://127.0.0.1:8080/data', {
+					    params: {
+					      page: page,
+						  limit: limit
+					    }
+					  })
+					  .then(function (response) {
+						  //更新tableData属性的数据
+						  that.$data.tableData = response.data.data.records;
+						  //更新total属性的数据
+						  that.$data.total = response.data.data.total;
+					  })
+					  .catch(function (error) {
+					    console.log(error);
+					  });
+					  //Vue.set(this.person,0,{age:res.data.age,name:res.data.name,sex:res.data.sex})
+					  /**
+					  * 0 更新的是位置0上的数据
+					  *
+					  */
+				}
+			}
+		});
+	</script>
+</html>
