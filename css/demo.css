@@ -1,0 +1,72 @@
+.imgscale img {
+	-moz-transition: all .5s ease;
+	-webkit-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+	transition: all 0.5s;
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	padding: 0;
+	margin: 0;
+}
+
+.imgscale:hover img {
+	transform: scale(1.1);
+}
+
+p.h4 a{
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.blogpic {
+	float: left;
+	display: block;
+	overflow: hidden;
+	position: relative;
+	border-radius: 5px;
+}
+
+.img-left {
+	display: block;
+	float: left;
+	width: 35%;
+	padding: 10px;
+}
+.card {display:inline-block}
+.card-body {
+	margin: 0;
+	display: block;
+	float: left;
+	width: 65%;
+}
+.fr-a{float: right; margin-top: -6px;}
+
+@media screen and (max-width:640px) {
+	.img-left {
+		
+		width: 100%;
+		padding: 0;
+	}
+	.blogpic,.imgscale img {	
+		border-radius:0;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+	}
+	.card {display:flex}
+	.card-body {
+		width: 100%;
+	}
+	.fr-a{float: right; width: 100%; margin-top: 5px;}
+	
+	p.h4 a{
+		display:inline;
+		text-overflow:inherit;
+		white-space:normal;
+		overflow:auto;
+	}
+}
