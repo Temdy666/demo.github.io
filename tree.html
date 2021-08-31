@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layui树形表格</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body class="layui-hide">
+<div class="right-desc">
+    <div class="layui-text desc-item">
+        treeTable实现了layui数据表格的大部分功能，并且在用法上与几乎数据表格一致，
+        支持懒加载、复选框联动(半选)、拖拽列宽、固定表头等功能，
+        <a href="https://gitee.com/whvse/treetable-lay" target="_blank">码云下载</a>。
+    </div>
+</div>
+<div class="page-wrapper">
+    <table id="demoTreeTb"></table>
+</div>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="tbBar">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="layui/layui.js"></script>
+<script>
+    layui.config({
+        base: 'js/'
+    }).use(['treeTable'], function () {
+        var $ = layui.jquery;
+        var treeTable = layui.treeTable;
+        $('body').removeClass('layui-hide');
+
+        // 渲染表格
+        treeTable.render({
+            elem: '#demoTreeTb',
+            url: 'data/tree.json',
+            toolbar: true,
+            tree: {
+                iconIndex: 1,
+                isPidData: true,
+                idName: 'id',
+                pidName: 'pid',
+                arrowType: 'arrow2',
+                getIcon: 'ew-tree-icon-style2'
+            },
+            cols: [[
+			  {type: 'numbers', title: '序号', width:60, align: 'center'},
+			  {field: 'name', title: '名称'},
+			  {field: 'path', title: '路径'},
+			  {align: 'center', toolbar: '#tbBar', title: '操作', width: 120}
+            ]],
+            style: 'margin-top:0;'
+        });
+
+    });
+</script>
+</body>
+</html>

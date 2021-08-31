@@ -1,0 +1,630 @@
+{
+    "code": 0,
+    "data": [
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot",
+            "flag": "D",
+            "name": "wwwroot",
+            "pid": "-1",
+            "id": 1
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images",
+            "flag": "D",
+            "name": "images",
+            "pid": 1,
+            "id": 2
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050542494.png",
+            "flag": "F",
+            "name": "20210823050542494.png",
+            "pid": 2,
+            "id": 3
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050555010.png",
+            "flag": "F",
+            "name": "20210823050555010.png",
+            "pid": 2,
+            "id": 4
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050648835.png",
+            "flag": "F",
+            "name": "20210823050648835.png",
+            "pid": 2,
+            "id": 5
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050707858.png",
+            "flag": "F",
+            "name": "20210823050707858.png",
+            "pid": 2,
+            "id": 6
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050734177.png",
+            "flag": "F",
+            "name": "20210823050734177.png",
+            "pid": 2,
+            "id": 7
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210823050754145.png",
+            "flag": "F",
+            "name": "20210823050754145.png",
+            "pid": 2,
+            "id": 8
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\20210823071446507.jpg",
+            "flag": "F",
+            "name": "20210823071446507.jpg",
+            "pid": 2,
+            "id": 9
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\20210823071552181.jpg",
+            "flag": "F",
+            "name": "20210823071552181.jpg",
+            "pid": 2,
+            "id": 10
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\20210823071617996.jpg",
+            "flag": "F",
+            "name": "20210823071617996.jpg",
+            "pid": 2,
+            "id": 11
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210826050308593.png",
+            "flag": "F",
+            "name": "20210826050308593.png",
+            "pid": 2,
+            "id": 12
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210826050937806.png",
+            "flag": "F",
+            "name": "20210826050937806.png",
+            "pid": 2,
+            "id": 13
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\20210829054240068.mp3",
+            "flag": "F",
+            "name": "20210829054240068.mp3",
+            "pid": 2,
+            "id": 14
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210829054304759.png",
+            "flag": "F",
+            "name": "20210829054304759.png",
+            "pid": 2,
+            "id": 15
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210829080648801.png",
+            "flag": "F",
+            "name": "20210829080648801.png",
+            "pid": 2,
+            "id": 16
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\20210829083456187.mp3",
+            "flag": "F",
+            "name": "20210829083456187.mp3",
+            "pid": 2,
+            "id": 17
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\20210829083456189.png",
+            "flag": "F",
+            "name": "20210829083456189.png",
+            "pid": 2,
+            "id": 18
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\default.png",
+            "flag": "F",
+            "name": "default.png",
+            "pid": 2,
+            "id": 19
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\default_tag.png",
+            "flag": "F",
+            "name": "default_tag.png",
+            "pid": 2,
+            "id": 20
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile",
+            "flag": "D",
+            "name": "downloadFile",
+            "pid": 2,
+            "id": 21
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210821",
+            "flag": "D",
+            "name": "20210821",
+            "pid": 21,
+            "id": 22
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210821\\1629509695490058589.jpg",
+            "flag": "F",
+            "name": "1629509695490058589.jpg",
+            "pid": 22,
+            "id": 23
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210821\\1629509864688016316.jpg",
+            "flag": "F",
+            "name": "1629509864688016316.jpg",
+            "pid": 22,
+            "id": 24
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210824",
+            "flag": "D",
+            "name": "20210824",
+            "pid": 21,
+            "id": 25
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210824\\1629754252380020996.png",
+            "flag": "F",
+            "name": "1629754252380020996.png",
+            "pid": 25,
+            "id": 26
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210824\\1629754328203077025.png",
+            "flag": "F",
+            "name": "1629754328203077025.png",
+            "pid": 25,
+            "id": 27
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210824\\1629754448999073520.png",
+            "flag": "F",
+            "name": "1629754448999073520.png",
+            "pid": 25,
+            "id": 28
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825",
+            "flag": "D",
+            "name": "20210825",
+            "pid": 21,
+            "id": 29
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825\\1629854859357078472.png",
+            "flag": "F",
+            "name": "1629854859357078472.png",
+            "pid": 29,
+            "id": 30
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825\\1629855064442083543.png",
+            "flag": "F",
+            "name": "1629855064442083543.png",
+            "pid": 29,
+            "id": 31
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825\\1629855227788093277.png",
+            "flag": "F",
+            "name": "1629855227788093277.png",
+            "pid": 29,
+            "id": 32
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825\\1629855695259069393.png",
+            "flag": "F",
+            "name": "1629855695259069393.png",
+            "pid": 29,
+            "id": 33
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210825\\1629856115434051812.png",
+            "flag": "F",
+            "name": "1629856115434051812.png",
+            "pid": 29,
+            "id": 34
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210826",
+            "flag": "D",
+            "name": "20210826",
+            "pid": 21,
+            "id": 35
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\20210826\\1629925829094059020.png",
+            "flag": "F",
+            "name": "1629925829094059020.png",
+            "pid": 35,
+            "id": 36
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content",
+            "flag": "D",
+            "name": "content",
+            "pid": 21,
+            "id": 37
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content\\07075532_re21.png",
+            "flag": "F",
+            "name": "07075532_re21.png",
+            "pid": 37,
+            "id": 38
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content\\113916_erA3_2282320.jpg",
+            "flag": "F",
+            "name": "113916_erA3_2282320.jpg",
+            "pid": 37,
+            "id": 39
+        },
+        {
+            "ext": ".jpg",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content\\150020_D0fd_2720166.jpg",
+            "flag": "F",
+            "name": "150020_D0fd_2720166.jpg",
+            "pid": 37,
+            "id": 40
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content\\150021_ieBE_2720166.png",
+            "flag": "F",
+            "name": "150021_ieBE_2720166.png",
+            "pid": 37,
+            "id": 41
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\content\\22170746_ryew.png",
+            "flag": "F",
+            "name": "22170746_ryew.png",
+            "pid": 37,
+            "id": 42
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo",
+            "flag": "D",
+            "name": "logo",
+            "pid": 21,
+            "id": 43
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\bootstrap_L2L9m.png",
+            "flag": "F",
+            "name": "bootstrap_L2L9m.png",
+            "pid": 43,
+            "id": 44
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\default_tag.png",
+            "flag": "F",
+            "name": "default_tag.png",
+            "pid": 43,
+            "id": 45
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\java.png",
+            "flag": "F",
+            "name": "java.png",
+            "pid": 43,
+            "id": 46
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\jquery_eurRt.png",
+            "flag": "F",
+            "name": "jquery_eurRt.png",
+            "pid": 43,
+            "id": 47
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\mybatis_TRiIC.png",
+            "flag": "F",
+            "name": "mybatis_TRiIC.png",
+            "pid": 43,
+            "id": 48
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\mysql.png",
+            "flag": "F",
+            "name": "mysql.png",
+            "pid": 43,
+            "id": 49
+        },
+        {
+            "ext": ".png",
+            "path": "E:\\data\\wwwroot\\images\\downloadFile\\logo\\spring-boot_9bKAs.png",
+            "flag": "F",
+            "name": "spring-boot_9bKAs.png",
+            "pid": 43,
+            "id": 50
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\MayPiano - Illusionary Daytime (钢琴版).mp3",
+            "flag": "F",
+            "name": "MayPiano - Illusionary Daytime (钢琴版).mp3",
+            "pid": 2,
+            "id": 51
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\好想爱这个世界啊.mp3",
+            "flag": "F",
+            "name": "好想爱这个世界啊.mp3",
+            "pid": 2,
+            "id": 52
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\孩子 - 西楼.mp3",
+            "flag": "F",
+            "name": "孩子 - 西楼.mp3",
+            "pid": 2,
+            "id": 53
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\绿色 - 陈雪凝.mp3",
+            "flag": "F",
+            "name": "绿色 - 陈雪凝.mp3",
+            "pid": 2,
+            "id": 54
+        },
+        {
+            "ext": ".mp3",
+            "path": "E:\\data\\wwwroot\\images\\起风了-买辣椒也用券.mp3",
+            "flag": "F",
+            "name": "起风了-买辣椒也用券.mp3",
+            "pid": 2,
+            "id": 55
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\logs",
+            "flag": "D",
+            "name": "logs",
+            "pid": 1,
+            "id": 56
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\logs\\blog",
+            "flag": "D",
+            "name": "blog",
+            "pid": 56,
+            "id": 57
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error",
+            "flag": "D",
+            "name": "error",
+            "pid": 57,
+            "id": 58
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-26.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-26.0.log",
+            "pid": 58,
+            "id": 59
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-27.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-27.0.log",
+            "pid": 58,
+            "id": 60
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-28.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-28.0.log",
+            "pid": 58,
+            "id": 61
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-29.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-29.0.log",
+            "pid": 58,
+            "id": 62
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-30.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-30.0.log",
+            "pid": 58,
+            "id": 63
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\error\\log-error-2021-08-31.0.log",
+            "flag": "F",
+            "name": "log-error-2021-08-31.0.log",
+            "pid": 58,
+            "id": 64
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info",
+            "flag": "D",
+            "name": "info",
+            "pid": 57,
+            "id": 65
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-26.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-26.0.log",
+            "pid": 65,
+            "id": 66
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-27.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-27.0.log",
+            "pid": 65,
+            "id": 67
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-28.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-28.0.log",
+            "pid": 65,
+            "id": 68
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-29.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-29.0.log",
+            "pid": 65,
+            "id": 69
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-30.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-30.0.log",
+            "pid": 65,
+            "id": 70
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\info\\log-info-2021-08-31.0.log",
+            "flag": "F",
+            "name": "log-info-2021-08-31.0.log",
+            "pid": 65,
+            "id": 71
+        },
+        {
+            "ext": "folder",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn",
+            "flag": "D",
+            "name": "warn",
+            "pid": 57,
+            "id": 72
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-26.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-26.0.log",
+            "pid": 72,
+            "id": 73
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-27.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-27.0.log",
+            "pid": 72,
+            "id": 74
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-28.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-28.0.log",
+            "pid": 72,
+            "id": 75
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-29.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-29.0.log",
+            "pid": 72,
+            "id": 76
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-30.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-30.0.log",
+            "pid": 72,
+            "id": 77
+        },
+        {
+            "ext": ".log",
+            "path": "E:\\data\\wwwroot\\logs\\blog\\warn\\log-warn-2021-08-31.0.log",
+            "flag": "F",
+            "name": "log-warn-2021-08-31.0.log",
+            "pid": 72,
+            "id": 78
+        }
+    ],
+    "msg": "ok"
+}
