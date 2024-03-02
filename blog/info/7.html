@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Files.walkFileTree()遍历目录文件输出树结构数据</title>
+  <meta name="keywords" content="Java">
+  <meta name="description" content="本文章最终的目的是根据传入的目录参数获取整个目录下的文件夹和文件列表数据，然后把列表数据组装成Tree树的数据结构返回，方便开发者使用数据结构配合前端的Tree树插件。。。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../list/0.html">技术分享</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">文章详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2"><input type="hidden" name="articleId" id="articleId" value="7"> <input type="hidden" name="title" id="title" value="Files.walkFileTree()遍历目录文件输出树结构数据">
+          <p class="h4">Files.walkFileTree()遍历目录文件输出树结构数据</p>
+          <p class="bloginfo"><i class="avatar"><img src="../client/images/t8.png"></i> <span>Temdy</span> <span>2021-08-31 13:26:50</span> <span>【<a href="../list/7.html" target="_blank">Java Code</a>】</span> <span>415人已围观</span></p>
+          <p class="card-text t_c1"></p>
+          <p>本文章最终的目的是根据传入的目录参数获取整个目录下的文件夹和文件列表数据，然后把列表数据组装成Tree树的数据结构返回，方便开发者使用数据结构配合前端的Tree树插件和TreeTable树表插件一起使用。</p>
+          <p><strong>java.nio.file.Files.walkFileTree是JDK7新增的静态工具方法</strong></p>
+          <pre><code class="language-java">static&nbsp;Path&nbsp;walkFileTree(Path&nbsp;start,&nbsp;Set&lt;FileVisitOption&gt;&nbsp;options,&nbsp;int&nbsp;maxDepth,&nbsp;FileVisitor&lt;?&nbsp;super&nbsp;Path&gt;&nbsp;visitor)&nbsp;throws&nbsp;IOException;
+static&nbsp;Path&nbsp;walkFileTree(Path&nbsp;start,&nbsp;FileVisitor&lt;?&nbsp;super&nbsp;Path&gt;&nbsp;visitor)&nbsp;throws&nbsp;IOException;</code></pre>
+          <p><strong>参数介绍：</strong></p>
+          <p>1、java.nio.file.Path start 遍历的起始路径</p>
+          <p>2、Set&lt;java.nio.file.FileVisitOption&gt; options 遍历选项</p>
+          <p>3、int maxDepth 遍历深度</p>
+          <p>4、java.nio.file.FileVisitor&lt;? super Path&gt; visitor 遍历过程中的行为控制器</p>
+          <p><strong>遍历行为控制器FileVisitor</strong></p>
+          <p>接口java.nio.file.FileVisitor包含四个方法，涉及到遍历过程中的几个重要的步骤节点。一般实际中使用SimpleFileVisitor简化操作。</p>
+          <pre><code class="language-java">public&nbsp;interface&nbsp;FileVisitor&lt;T&gt;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;FileVisitResult&nbsp;preVisitDirectory(T&nbsp;dir,&nbsp;BasicFileAttributes&nbsp;attrs)&nbsp;throws&nbsp;IOException;
+&nbsp;&nbsp;&nbsp;&nbsp;FileVisitResult&nbsp;visitFile(T&nbsp;file,&nbsp;BasicFileAttributes&nbsp;attrs)&nbsp;throws&nbsp;IOException;
+&nbsp;&nbsp;&nbsp;&nbsp;FileVisitResult&nbsp;visitFileFailed(T&nbsp;file,&nbsp;IOException&nbsp;exc)&nbsp;throws&nbsp;IOException;
+&nbsp;&nbsp;&nbsp;&nbsp;FileVisitResult&nbsp;postVisitDirectory(T&nbsp;dir,&nbsp;IOException&nbsp;exc)&nbsp;throws&nbsp;IOException;
+}</code></pre>
+          <p><strong>接口方法介绍：</strong></p>
+          <p>1、preVisitDirectory 访问一个目录，在进入之前调用。</p>
+          <p>2、postVisitDirectory 一个目录的所有节点都被访问后调用。遍历时跳过同级目录或有错误发生，Exception会传递给这个方法</p>
+          <p>3、visitFile 文件被访问时被调用。该文件的文件属性被传递给这个方法</p>
+          <p>4、visitFileFailed 当文件不能被访问时，此方法被调用。Exception被传递给这个方法。</p>
+          <p><strong>实现原理介绍：</strong></p>
+          <p>只要用到preVisitDirectory和visitFile两个方法获取到目录下的所有目录和文件数据，这些原始数据只有目录和文件的相关属性，不能构成树结构，所以要经过特殊处理一下，直接上代码，简洁明了，复制粘贴就可以使用。</p>
+          <pre><code class="language-java">/**
+&nbsp;*&nbsp;获取目录文件树数据方法
+&nbsp;*&nbsp;@param&nbsp;dir&nbsp;目录
+&nbsp;*&nbsp;@return&nbsp;文件名
+&nbsp;*/
+public&nbsp;List&lt;Map&lt;String,Object&gt;&gt;&nbsp;getFileTreeData(String&nbsp;dir){
+	Path&nbsp;root&nbsp;=&nbsp;Paths.get(dir);
+	List&lt;Map&lt;String,&nbsp;Object&gt;&gt;&nbsp;list&nbsp;=&nbsp;new&nbsp;ArrayList&lt;&gt;();
+	try&nbsp;{
+		Files.walkFileTree(root,&nbsp;new&nbsp;SimpleFileVisitor&lt;Path&gt;()&nbsp;{
+			Integer&nbsp;id&nbsp;=&nbsp;1;
+			String&nbsp;fn&nbsp;=&nbsp;null;
+			String&nbsp;pn&nbsp;=&nbsp;null;
+			//访问文件夹之前自动调用此方法
+			@Override
+			public&nbsp;FileVisitResult&nbsp;preVisitDirectory(Path&nbsp;dir,&nbsp;BasicFileAttributes&nbsp;attrs)&nbsp;throws&nbsp;IOException&nbsp;{
+				Map&lt;String,&nbsp;Object&gt;&nbsp;entity&nbsp;=&nbsp;new&nbsp;HashMap&lt;&gt;();
+				entity.put("id",id);
+				entity.put("name",&nbsp;dir.getName(dir.getParent().getNameCount()).toString());
+				entity.put("path",&nbsp;dir.toString());
+				entity.put("flag",&nbsp;"D");
+				entity.put("ext",&nbsp;"folder");
+				pn&nbsp;=&nbsp;dir.getParent().getName(dir.getParent().getNameCount()&nbsp;-&nbsp;1).toString();
+				if(id==1){
+					entity.put("pid","-1");
+				}else&nbsp;{
+					entity.put("pid",&nbsp;getPid(list,pn));
+				}
+				list.add(entity);
+				id++;
+				return&nbsp;FileVisitResult.CONTINUE;
+			}
+
+			//文件被访问时被调用。该文件的文件属性被传递给这个方法
+			@Override
+			public&nbsp;FileVisitResult&nbsp;visitFile(Path&nbsp;file,&nbsp;BasicFileAttributes&nbsp;attrs)&nbsp;throws&nbsp;IOException&nbsp;{
+				Map&lt;String,&nbsp;Object&gt;&nbsp;entity&nbsp;=&nbsp;new&nbsp;HashMap&lt;&gt;();
+				fn&nbsp;=&nbsp;file.getName(file.getParent().getNameCount()).toString();
+				entity.put("id",id);
+				entity.put("name",&nbsp;fn);
+				entity.put("path",&nbsp;file.toString());
+				entity.put("flag",&nbsp;"F");
+				entity.put("ext",&nbsp;fn.substring(fn.lastIndexOf(".")));
+				pn&nbsp;=&nbsp;file.getParent().getName(file.getParent().getNameCount()&nbsp;-&nbsp;1).toString();
+				entity.put("pid",getPid(list,pn));
+				list.add(entity);
+				id++;
+				return&nbsp;FileVisitResult.CONTINUE;
+			}
+		});
+	}&nbsp;catch&nbsp;(IOException&nbsp;e)&nbsp;{
+		e.printStackTrace();
+	}
+	return&nbsp;list;
+}
+
+&nbsp;/**
+&nbsp;*&nbsp;获取父级目录id的方法
+&nbsp;*&nbsp;@param&nbsp;list&nbsp;文件树列表数据
+&nbsp;*&nbsp;@param&nbsp;parentName&nbsp;父目录名称
+&nbsp;*&nbsp;@return&nbsp;文件名
+&nbsp;*/
+public&nbsp;Object&nbsp;getPid(&nbsp;List&lt;Map&lt;String,Object&gt;&gt;&nbsp;list,String&nbsp;parentName){
+	List&lt;Map&lt;String,Object&gt;&gt;&nbsp;files&nbsp;=&nbsp;list.stream().filter(file&nbsp;-&gt;&nbsp;file.get("name").toString().equals(parentName)).collect(Collectors.toList());
+	if(files.size()&nbsp;&gt;&nbsp;0){
+		return&nbsp;files.get(0).get("id");
+	}
+	return&nbsp;-1;
+}</code></pre>
+          <p><br></p>
+          <p>配合TreeTable树表插件使用效果：<a href="https://temdy666.github.io/demo.github.io/tree.html" target="_blank">https://temdy666.github.io/demo.github.io/tree.html</a></p>
+          <p></p>
+          <p class="text-center"><span class="btn btn-danger" id="greatBtn" onclick="great()">很赞哦！ (2)</span></p>
+          <div>
+           <p>上一篇：<a href="6.html" target="_blank" title="Bootstrap幻灯片组件的使用和美化">Bootstrap幻灯片组件的使用和美化</a></p>
+           <p>下一篇：<a href="8.html" target="_blank" title="Springboot集成MyBatis-Plus使用的快感">Springboot集成MyBatis-Plus使用的快感</a></p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-command"></i>&nbsp;相关文章</small></h4>
+       </div>
+       <ul class="list-group mb-2" style="margin-left: 0; width: 100%;">
+        <li class="list-group-item link-a"><a href="11.html" title="Jsoup实现根据ip获取国家和城市信息"><i class="bi bi-caret-right"></i>Jsoup实现根据ip获取国家和城市信息</a><a href="info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><i class="bi bi-caret-right"></i>Files.walkFileTree()遍历目录文件输出树结构数据</a><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><i class="bi bi-caret-right"></i>UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+       </ul>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-pencil-square"></i>&nbsp;文章评论</small></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body border-bottom">
+          <div class="mb-3"><label for="userName" class="form-label">用户名</label> <input type="text" class="form-control" id="userName" placeholder="请输入您的用户名">
+          </div>
+          <div class="mb-3"><label for="content" class="form-label">评论内容</label> <textarea class="form-control" id="content" rows="3" placeholder="请写下您想评论的内容"></textarea>
+          </div><span class="btn btn-danger" onclick="relpy()">提交</span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+    <script type="text/javascript">
+		//监听整个页面的 copy 事件
+		document.addEventListener('copy',function(e){
+			// clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+			let clipboardData = e.clipboardData || window.clipboardData;
+			// 如果 未复制或者未剪切，直接 return
+			if(!clipboardData) return ;
+			// Selection 对象 表示用户选择的文本范围或光标的当前位置。
+			// 声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+			let text = window.getSelection().toString();
+			if(text){
+				// 如果文本存在，首先取消默认行为
+				e.preventDefault();
+				// 通过调用 clipboardData 对象的 setData(format,data) 方法，设置相关文本
+				// format 一个 DOMString 类型 表示要添加到 drag object 的拖动数据的类型
+				// data 一个 DOMString 表示要添加到 drag object 的数据
+				clipboardData.setData('text/plain', text + '\r\n\r\n版权声明：本文为DJB-Blog博客的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：'+document.location.href);
+			}
+		})
+	</script>
+   </div>
+  </main>
+ </body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>标签云</title>
+  <meta name="keywords" content="DJB-Blog,Java程序员,JavaWeb,Springboot,SpringMVC,前端开发,HTML5,CSS3">
+  <meta name="description" content="DJB-Blog一个技术分享博客，专门分享站长在学习过程遇到的一些坑、写的一些功能代码和实用案例，方便初学者快速掌握相关知识。。。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="client/images/favicon.ico">
+  <link rel="stylesheet" href="client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="client/css/style.css" media="all">
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="index.html">首页</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">标签</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="p-3 shadow-sm"><a href="detail/11.html">
+           <div class="d-flex text-muted pt-3 border-bottom"><img class="bd-placeholder-img flex-shrink-0 me-2" width="40" height="40" src="downloadFile/logo/vue-js_UzKKG.png">
+            <div class="pb-3 mb-0 small lh-sm w-100">
+             <div class="d-flex justify-content-between"><strong class="text-gray-dark">Vue.js</strong><small>渐进式 JavaScript 框架</small>
+             </div><span class="d-block pt-2"> Vue.js是构建Web界面的JavaScript库，提供数据驱动的组件，还有简单灵活的API，使得MVVM更简单。 主要特性：可扩展的数据绑定，将普通的JS对象作为model，简洁明了的API ，组件化 UI 构建和配合别的库使用。 </span>
+            </div>
+           </div></a><a href="detail/12.html">
+           <div class="d-flex text-muted pt-3 border-bottom"><img class="bd-placeholder-img flex-shrink-0 me-2" width="40" height="40" src="downloadFile/20210830222920486.png">
+            <div class="pb-3 mb-0 small lh-sm w-100">
+             <div class="d-flex justify-content-between"><strong class="text-gray-dark">CSS3</strong><small>层叠样式表</small>
+             </div><span class="d-block pt-2"> CSS3的新特征有很多，例如圆角效果、图形化边界、块阴影与文字阴影、使用RGBA实现透明效果、渐变效果、使用@Font-Face实现定制字体、多背景图、文字或图像的变形处理（旋转、缩放、倾斜、移动）、多栏布局、媒体查询等。 </span>
+            </div>
+           </div></a><a href="detail/13.html">
+           <div class="d-flex text-muted pt-3 border-bottom"><img class="bd-placeholder-img flex-shrink-0 me-2" width="40" height="40" src="downloadFile/20210903062751764.png">
+            <div class="pb-3 mb-0 small lh-sm w-100">
+             <div class="d-flex justify-content-between"><strong class="text-gray-dark">Liunx</strong><small>Unix操作系统</small>
+             </div><span class="d-block pt-2"> Linux，全称GNU/Linux，是一套免费使用和自由传播的类Unix操作系统，是一个基于POSIX的多用户、多任务、支持多线程和多CPU的操作系统。伴随着互联网的发展，Linux得到了来自全世界软件爱好者、组织、公司的支持。 </span>
+            </div>
+           </div></a><a href="detail/14.html">
+           <div class="d-flex text-muted pt-3 border-bottom"><img class="bd-placeholder-img flex-shrink-0 me-2" width="40" height="40" src="downloadFile/logo/nginx_NcsKh.png">
+            <div class="pb-3 mb-0 small lh-sm w-100">
+             <div class="d-flex justify-content-between"><strong class="text-gray-dark">Nginx</strong><small>高性能 Web 服务器</small>
+             </div><span class="d-block pt-2"> Nginx（发音同 engine x）是一款轻量级的 Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个 BSD-like 协议下发行，可以在 UNIX、GNU/Linux、BSD、Mac OS X、Solaris，以及 Microsoft Windows 等操作系统中运行。 </span>
+            </div>
+           </div></a><a href="detail/15.html">
+           <div class="d-flex text-muted pt-3 border-bottom"><img class="bd-placeholder-img flex-shrink-0 me-2" width="40" height="40" src="downloadFile/logo/mybatis_TRiIC.png">
+            <div class="pb-3 mb-0 small lh-sm w-100">
+             <div class="d-flex justify-content-between"><strong class="text-gray-dark">MyBatis-Plus</strong><small>MyBatis 的增强工具</small>
+             </div><span class="d-block pt-2"> MyBatis-Plus (opens new window)（简称 MP）是一个 MyBatis (opens new window)的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。 </span>
+            </div>
+           </div></a>
+          <nav aria-label="..." class="mt-3">
+           <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="tagsp1.html">1</a></li>
+            <li class="page-item  active"><span class="page-link">2</span></li>
+           </ul>
+          </nav>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main><!--引入底部模板-->
+  <footer>
+   <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+    <div class="top"></div></a>
+  </footer>
+  <script type="text/javascript" src="client/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="client/js/public.js"></script>
+ </body>
+</html>

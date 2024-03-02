@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>jQuery</title>
+  <meta name="keywords" content="jQuery">
+  <meta name="description" content="jQuery是一个快速，小型且功能丰富的JavaScript库。借助易于使用的API（可在多种浏览器中使用），它使HTML文档的遍历和操纵，事件处理，动画和Ajax等事情变得更加简单。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			button.active{font-weight: bold;}
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../tags.html">标签</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">标签详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2">
+          <div class="d-flex text-muted"><img class="bd-placeholder-img flex-shrink-0 me-2" width="50" height="50" src="../downloadFile/logo/jquery_eurRt.png">
+           <div class="pb-3 mb-0 small lh-sm w-100">
+            <div class="d-flex justify-content-between"><strong class="text-gray-dark">jQuery</strong><small>轻量级 JavaScript 框架</small>
+            </div><span class="d-block pt-2"> jQuery是一个快速，小型且功能丰富的JavaScript库。借助易于使用的API（可在多种浏览器中使用），它使HTML文档的遍历和操纵，事件处理，动画和Ajax等事情变得更加简单。 </span>
+           </div>
+          </div>
+          <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+           <li class="nav-item" role="presentation"><button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">详细介绍</button></li>
+           <li class="nav-item" role="presentation"><button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">相关文章</button></li>
+          </ul>
+          <div class="tab-content p-2" id="myTabContent">
+           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <p>jQuery是一个快速，小型且功能丰富的JavaScript库。借助易于使用的API（可在多种浏览器中使用），它使HTML文档的遍历和操纵，事件处理，动画和Ajax等事情变得更加简单。兼具多功能性和可扩展性，jQuery改变了数百万人编写JavaScript的方式。</p>
+            <p><span style="background-color:#ffffff; color:#333333">jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的css选择器，并且可对CSS选择器进行扩展；拥有便捷的插件扩展机制和丰富的插件。jQuery兼容各种主流浏览器，如IE 6.0+、FF 1.5+、Safari 2.0+、Opera 9.0+等。</span></p>
+            <h1 style="text-align:start">语言特点</h1>
+            <ul class=" list-paddingleft-2">
+             <li><p>快速获取文档元素</p></li>
+             <li><p>提供漂亮的页面动态效果</p></li>
+             <li><p>创建AJAX无刷新网页</p></li>
+             <li><p>提供对JavaScript语言的增强</p></li>
+             <li><p>增强的事件处理</p></li>
+             <li><p>更改网页内容</p></li>
+            </ul>
+            <h1 style="text-align:start">jQuery的由来</h1>
+            <p>2<span style="background-color:#ffffff; color:#333333">005年8月，John Resig提议改进Prototype的Behaviour库，于是他在博客上发表了自己的想法。</span> <span style="background-color:#ffffff; color:#333333">当时John Resig的想法很简单：他发现这种语法相对现有的JavaScript库更为简洁。但他没想到的是，这篇文章一经发布就引起了业界的关注。于是John开始认真思考着这件事情（</span>编写语法更为简洁的JavaScript程序库<span style="background-color:#ffffff; color:#333333">）。</span></p>
+            <p><span style="background-color:#ffffff; color:#333333">直到2006年1月14日，John Resig正式宣布以jQuery的名称发布自己的程序库。随之而来的是jQuery的快速发展。</span> <span style="background-color:#ffffff; color:#333333">2006年1月John Resig等人创建了jQuery；8月，jQuery的第一个稳定版本，并且已经支持CSS选择符、事件处理和AJAX交互。</span></p>
+            <h1>工作原理</h1>
+            <p style="text-align:start">jQuery的模块可以分为3部分：入口模块、底层支持模块和功能模块。在构造jQuery对象模块中，如果在调用构造函数jQuery()创建jQuery对象时传入了选择器表达式，则会调用选择器Sizzle（<em>一款纯JavaScript实现的CSS选择器引擎，用于查找与选择器表达式匹配的元素集合</em>）遍历文档，查找与之匹配的DOM元素，并创建一个包含了这些DOM元素引用的jQuery对象。</p>
+            <p style="text-align:start"><span style="background-color:#ffffff; color:#333333">在底层支持模块中，回调函数列表模块用于增强对回调函数的管理，支持添加、移除、触发、锁定、禁用回调函数等功能；异步队列模块用于解耦异步任务和回调函数，它在回调函数列表的基础上为回调函数增加了状态，并提供了多个回调函数列表，支持传播任意同步或异步回调函数的成功或失败状态；数据缓存模块用于为DOM元素和Javascript对象附加任意类型的数据；队列模块用于管理一组函数，支持函数的入队和出队操作，并确保函数按顺序执行，它基于数据缓存模块实现。</span></p>
+            <p style="text-align:start"><span style="background-color:#ffffff; color:#333333">在功能模块中，事件系统提供了统一的事件绑定、响应、手动触发和移除机制，它并没有将事件直接绑定到DOM元素上，而是基于数据缓存模块来管理事件；Ajax模块允许从服务器上加载数据，而不用刷新页面，它基于异步队列模块来管理和触发回调函数；动画模块用于向网页中添加动画效果，它基于队列模块来管理和执行动画函数；属性操作模块用于对HTML属性和DOM属性进行读取、设置和移除操作；DOM遍历模块用于在DoM树中遍历父元素、子元素和兄弟元素；DOM操作模块用于插入、移除、复制和替换DOM元素；样式操作模块用于获取计算样式或设置内联样式；坐标模块用于读取或设置DOM元素的文档坐标；尺寸模块用于获取DOM元素的高度和宽度。</span></p>
+            <h1 style="text-align:start">运行条件</h1>
+            <p><span style="background-color:#ffffff; color:#333333">运行jQuery所需的条件很简单：一台计算机、一个智能电话或一个可以运行现代浏览器的设备。jQuery对浏览器的要求也相当自由。官方网站列出了下列支持jQuery的浏览器：</span></p>
+            <ul class=" list-paddingleft-2">
+             <li><p>Firefox 2.0+</p></li>
+             <li><p>Internet Explorer 6+</p></li>
+             <li><p>Safari 3+</p></li>
+             <li><p>Opera 10．6+</p></li>
+             <li><p>Chrome 8+&nbsp;</p></li>
+            </ul>
+           </div>
+           <div class="tab-pane fade pt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903112422691.jpg" alt="UEditor富文本编辑器集成PrismJS代码高亮插件">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件">UEditor富文本编辑器集成PrismJS代码高亮插件</a></p>
+               <p class="card-text">UEditor是由百度web前端研发部开发所见即所得富文本web编辑器，具有轻量、可定制、注重用户体验等特点。PrismJS是一款轻量级、可扩展的语法高亮显示工具。。。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/7.html" class="text-primary">Java Code</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-08-28 02:58:11 <a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903114450638.jpg" alt="DJB-Blog我的个人博客终于上线了">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了">DJB-Blog我的个人博客终于上线了</a></p>
+               <p class="card-text">DJB-Blog是一个技术方面的分享博客网站，专门分享站长在学习过程遇到的一些坑、写的一些功能代码和实用例子，方便初学者快速掌握相关知识点和提高程序开发效率。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/1.html" class="text-primary">Spring-boot</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-08-16 08:09:49 <a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+   </div>
+  </main>
+ </body>
+</html>

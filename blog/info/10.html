@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>MyBatis-Plus使用QueryWrapper实现文章归档</title>
+  <meta name="keywords" content="MyBatis-Plus,MyBatis,MySQL,Spring Boot">
+  <meta name="description" content="文章归档这个模块我看到每个博客都有，具体有什么作用我也不太清楚，反正博客该有的功能我的博客也要有，于是我的个人博客DJB-Blog也加上了这个模块。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../list/0.html">技术分享</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">文章详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2"><input type="hidden" name="articleId" id="articleId" value="10"> <input type="hidden" name="title" id="title" value="MyBatis-Plus使用QueryWrapper实现文章归档">
+          <p class="h4">MyBatis-Plus使用QueryWrapper实现文章归档</p>
+          <p class="bloginfo"><i class="avatar"><img src="../client/images/t8.png"></i> <span>Temdy</span> <span>2021-09-03 23:06:44</span> <span>【<a href="../list/2.html" target="_blank">MyBatis-Plus</a>】</span> <span>426人已围观</span></p>
+          <p class="card-text t_c1"></p>
+          <p>文章归档这个模块我看到每个博客都有，具体有什么作用我也不太清楚，反正博客该有的功能我的博客也要有，于是我的个人博客DJB-Blog也加上了这个模块。</p>
+          <h4>实现原理：</h4>
+          <p>数据库有一张表名称：tb_article，创建时间的字段名称：create_time，实体类名称：Article</p>
+          <p><strong>1、查询的结果显示3个新的字段（年份，月份，数量）</strong></p>
+          <p>这些字段都不是原来表里面的，都要用mysql的内置函数获取结果赋于新的字段：</p>
+          <p><span style="color: rgb(255, 0, 0);">年份的获取：</span>需要从创建时间的字段create_time中获取年份的部分，用内置函数year(),实现year(create_time) as year</p>
+          <p><span style="color: rgb(255, 0, 0);">月份的获取：</span>需要从创建时间的字段create_time中获取年份的部分，用内置函数month(),实现month(create_time) as month</p>
+          <p><span style="color: rgb(255, 0, 0);">数量的获取：</span>直接使用内置函数count(),实现count(*) as count</p>
+          <p><strong>2、需要根据新的year和month两个字段分组查询，实现group by year,month</strong></p>
+          <p><strong>3、结果进行排序把最结果份排在最前面</strong></p>
+          <p>需要根据新的year和month两个字段加起来的和作为排序字段来倒序，实现order by year+month desc</p>
+          <p><strong>4、经过以上3步的分解得到最终的sql语句</strong></p>
+          <pre><code class="language-java">select&nbsp;year(create_time)&nbsp;as&nbsp;year,month(create_time)&nbsp;as&nbsp;month,count(*)&nbsp;as&nbsp;count&nbsp;from&nbsp;tb_article&nbsp;group&nbsp;by&nbsp;year,month&nbsp;order&nbsp;by&nbsp;year+month&nbsp;desc</code></pre>
+          <p><br></p>
+          <p><strong>5、转化为MyBatis-Plus使用QueryWrapper实现</strong></p>
+          <p>QueryWrapper函数介绍<span style="white-space:pre"></span></p>
+          <p>|-select()查询指定字段，同时可对字段进行Mysql函数处理,充当sql语句中的select（这个部分）from 表名</p>
+          <p>|-groupBy()分组指定字段，支持多个字段，充当sql语句中的group by 字段1,字段2...</p>
+          <p>|-orderByDesc()倒数排序指定字段，支持多个字段，充当sql语句中的order by 字段1,字段2... desc</p>
+          <p><br></p>
+          <p>第4步的sql语句转化为QueryWrapper结果如下：</p>
+          <pre><code class="language-java">QueryWrapper&lt;Article&gt;&nbsp;queryWrapper=new&nbsp;QueryWrapper&lt;&gt;();
+queryWrapper.select("year(create_time)&nbsp;as&nbsp;year","month(create_time)&nbsp;as&nbsp;month","count(*)&nbsp;as&nbsp;count")
+		.groupBy("year","month")
+		.orderByDesc("year+month");</code></pre>
+          <p>最后用MyBatis-Plus的Mapper中的selectMaps(@Param(Constants.WRAPPER) Wrapper&lt;T&gt; queryWrapper)方法返回List&lt;Map&lt;String, Object&gt;&gt;列表数据。</p>
+          <p><br></p>
+          <p>效果的话可以点击顶部导航菜单上的文档归档链接或点击：<a href="https://www.djb-blog.com/archive" target="_blank">https://www.djb-blog.com/archive</a>查看。</p>
+          <p><br></p>
+          <p>mysql中文帮助手册（MySQL_5.1_zh.chm）下载地址</p>
+          <p>链接：<a href="https://pan.baidu.com/s/1ZBvZofCUgubEhG-MAhiBRg" target="_blank">https://pan.baidu.com/s/1ZBvZofCUgubEhG-MAhiBRg</a>&nbsp;</p>
+          <p>提取码：1234</p>
+          <p></p>
+          <p class="text-center"><span class="btn btn-danger" id="greatBtn" onclick="great()">很赞哦！ (1)</span></p>
+          <div>
+           <p>上一篇：<a href="9.html" target="_blank" title="Linux中Nginx使用if判断语句踩的坑">Linux中Nginx使用if判断语句踩的坑</a></p>
+           <p>下一篇：<a href="11.html" target="_blank" title="Jsoup实现根据ip获取国家和城市信息">Jsoup实现根据ip获取国家和城市信息</a></p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-command"></i>&nbsp;相关文章</small></h4>
+       </div>
+       <ul class="list-group mb-2" style="margin-left: 0; width: 100%;">
+        <li class="list-group-item link-a"><a href="info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><i class="bi bi-caret-right"></i>MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+       </ul>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-pencil-square"></i>&nbsp;文章评论</small></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body border-bottom">
+          <div class="mb-3"><label for="userName" class="form-label">用户名</label> <input type="text" class="form-control" id="userName" placeholder="请输入您的用户名">
+          </div>
+          <div class="mb-3"><label for="content" class="form-label">评论内容</label> <textarea class="form-control" id="content" rows="3" placeholder="请写下您想评论的内容"></textarea>
+          </div><span class="btn btn-danger" onclick="relpy()">提交</span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+    <script type="text/javascript">
+		//监听整个页面的 copy 事件
+		document.addEventListener('copy',function(e){
+			// clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+			let clipboardData = e.clipboardData || window.clipboardData;
+			// 如果 未复制或者未剪切，直接 return
+			if(!clipboardData) return ;
+			// Selection 对象 表示用户选择的文本范围或光标的当前位置。
+			// 声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+			let text = window.getSelection().toString();
+			if(text){
+				// 如果文本存在，首先取消默认行为
+				e.preventDefault();
+				// 通过调用 clipboardData 对象的 setData(format,data) 方法，设置相关文本
+				// format 一个 DOMString 类型 表示要添加到 drag object 的拖动数据的类型
+				// data 一个 DOMString 表示要添加到 drag object 的数据
+				clipboardData.setData('text/plain', text + '\r\n\r\n版权声明：本文为DJB-Blog博客的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：'+document.location.href);
+			}
+		})
+	</script>
+   </div>
+  </main>
+ </body>
+</html>

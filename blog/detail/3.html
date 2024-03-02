@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>MyBatis</title>
+  <meta name="keywords" content="MyBatis">
+  <meta name="description" content="MyBatis的前身就是iBatis，是一个数据持久层(ORM)框架。	iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			button.active{font-weight: bold;}
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../tags.html">标签</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">标签详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2">
+          <div class="d-flex text-muted"><img class="bd-placeholder-img flex-shrink-0 me-2" width="50" height="50" src="../downloadFile/logo/mybatis_TRiIC.png">
+           <div class="pb-3 mb-0 small lh-sm w-100">
+            <div class="d-flex justify-content-between"><strong class="text-gray-dark">MyBatis</strong><small>Java 数据持久层框架</small>
+            </div><span class="d-block pt-2"> MyBatis的前身就是iBatis，是一个数据持久层(ORM)框架。 iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。 </span>
+           </div>
+          </div>
+          <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+           <li class="nav-item" role="presentation"><button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">详细介绍</button></li>
+           <li class="nav-item" role="presentation"><button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">相关文章</button></li>
+          </ul>
+          <div class="tab-content p-2" id="myTabContent">
+           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <p>MyBatis 的前身就是 iBatis&nbsp;，是一个数据持久层(ORM)框架。</p>
+            <p><img alt="" src="../downloadFile/content/22170746_ryew.png"></p>
+            <p><strong>iBATIS</strong>一词来源于“internet”和“abatis”的组合，是一个基于Java的持久层框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAO），同时还提供一个利用这个框架开发的 JPetStore实例。</p>
+            <p><strong>在线Javadoc：</strong>http://tool.oschina.net/apidocs/apidoc?api=mybatis-3.1.1</p>
+           </div>
+           <div class="tab-pane fade pt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903230420366.jpg" alt="MyBatis-Plus使用QueryWrapper实现文章归档">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档">MyBatis-Plus使用QueryWrapper实现文章归档</a></p>
+               <p class="card-text">文章归档这个模块我看到每个博客都有，具体有什么作用我也不太清楚，反正博客该有的功能我的博客也要有，于是我的个人博客DJB-Blog也加上了这个模块。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/2.html" class="text-primary">MyBatis-Plus</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-09-03 23:06:44 <a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903110858441.jpg" alt="Springboot集成MyBatis-Plus使用的快感">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感">Springboot集成MyBatis-Plus使用的快感</a></p>
+               <p class="card-text">其实有很多的工具包或插件都是非常优秀的，只是有很多的开发者不知道它的存在或者知道它的存在而没有用它的需求，它们都有一个共同的特点，那就是为了简化开发提交效率而存在。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/1.html" class="text-primary">Spring-boot</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-09-01 23:51:48 <a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903114450638.jpg" alt="DJB-Blog我的个人博客终于上线了">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了">DJB-Blog我的个人博客终于上线了</a></p>
+               <p class="card-text">DJB-Blog是一个技术方面的分享博客网站，专门分享站长在学习过程遇到的一些坑、写的一些功能代码和实用例子，方便初学者快速掌握相关知识点和提高程序开发效率。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/1.html" class="text-primary">Spring-boot</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-08-16 08:09:49 <a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+   </div>
+  </main>
+ </body>
+</html>

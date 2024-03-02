@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>CSS3</title>
+  <meta name="keywords" content="CSS3">
+  <meta name="description" content="CSS3的新特征有很多，例如圆角效果、图形化边界、块阴影与文字阴影、使用RGBA实现透明效果、渐变效果、使用@Font-Face实现定制字体、多背景图、文字或图像的变形处理（旋转、缩放、倾斜、移动）、多栏布局、媒体查询等。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			button.active{font-weight: bold;}
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../tags.html">标签</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">标签详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2">
+          <div class="d-flex text-muted"><img class="bd-placeholder-img flex-shrink-0 me-2" width="50" height="50" src="../downloadFile/20210830222920486.png">
+           <div class="pb-3 mb-0 small lh-sm w-100">
+            <div class="d-flex justify-content-between"><strong class="text-gray-dark">CSS3</strong><small>层叠样式表</small>
+            </div><span class="d-block pt-2"> CSS3的新特征有很多，例如圆角效果、图形化边界、块阴影与文字阴影、使用RGBA实现透明效果、渐变效果、使用@Font-Face实现定制字体、多背景图、文字或图像的变形处理（旋转、缩放、倾斜、移动）、多栏布局、媒体查询等。 </span>
+           </div>
+          </div>
+          <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
+           <li class="nav-item" role="presentation"><button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">详细介绍</button></li>
+           <li class="nav-item" role="presentation"><button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">相关文章</button></li>
+          </ul>
+          <div class="tab-content p-2" id="myTabContent">
+           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h4>一、什么是CSS3</h4>
+            <p>CSS3是CSS（层叠样式表）技术的升级版本，于1999年开始制订，2001年5月23日W3C完成了CSS3的工作草案，主要包括盒子模型、列表模块、超链接方式、语言模块、背景和边框、文字特效、多栏布局等模块。</p>
+            <p>CSS演进的一个主要变化就是W3C决定将CSS3分成一系列模块。浏览器厂商按CSS节奏快速创新，因此通过采用模块方法，CSS3规范里的元素能以不同速度向前发展，因为不同的浏览器厂商只支持给定特性。但不同浏览器在不同时间支持不同特性，这也让跨浏览器开发变得复杂。</p>
+            <h4>二、新增特性</h4>
+            <p>CSS3的新特征有很多，例如圆角效果、图形化边界、块阴影与文字阴影、使用RGBA实现透明效果、渐变效果、使用@Font-Face实现定制字体、多背景图、文字或图像的变形处理（旋转、缩放、倾斜、移动）、多栏布局、媒体查询等。</p>
+            <p><strong>1、边框特性</strong></p>
+            <p>CSS3对网页中的边框进行了一些改进，主要包括支持圆角边框、多层边框、边框色彩与图片等。在CSS3中最常用的一个改进就是圆角边框，通过CSS3的属性可以快速实现圆角定义，同时还可以根据实际情况针对特定角进行圆角定义</p>
+            <p><strong>2、多背景图</strong></p>
+            <p>CSS3允许使用多个属性（比如background-image、background-repeat、background-size、background-position、background-origin和background-clip等）在一个元素上添加多层背景图片。该属性的应用大大改善了以往面对多层次设计需要多层布局的问题，帮助Web前端开发者在不借助Photoshop的情况下实现对页面背景的设计，简化了背景图片的维护成本。</p>
+            <p><strong>3、颜色与透明度</strong></p>
+            <p>CSS3颜色模块的引入，实现了制作Web效果时不再局限于RGB和十六进制两种模式。CSS3增加了HSL、HSLA、RGBA几种新的颜色模式。这几种颜色模式的提出，在做开发的时候不仅可以设置元素的色彩，还能根据需要轻松地设定元素透明度。</p>
+            <p><strong>4、多列布局与弹性盒模型布局</strong></p>
+            <p>CSS3多列布局属性可以不使用多个div标签就能实现多列布局。CSS3中的多列布局模块描述了如何像报纸、杂志那样，把一个简单的区块拆成多列，并通过相应属性来实现列数、列宽、各列之间的空白间距。弹性盒模型布局方便了Web前端开发者根据复杂的前端分辨率进行弹性布局，轻松地实现页面中的某一区块在水平、垂直方向对齐，是进行响应式网站开发的一大利器。</p>
+            <p><strong>5、盒子的变形</strong></p>
+            <p>在CSS2.1中，想让某个元素变形必须要借助JavaScript写大量的代码实现，在CSS3中加入了变形属性，该属性在2D或3D空间里操作盒子的位置和形状，来实现例如旋转、扭曲、缩放或者移位。变形属性的出现，使Web前端中的元素展示不仅仅局限在二维空间，Web前端开发者可以通过旋转、扭曲、缩放或者移位等操作实现元素在三维控件上的展示。通过变形元素，web前端中的内容展示更加形象、真实。</p>
+            <p><strong>6、过渡与动画</strong></p>
+            <p>CSS3的“过渡”（transition）属性通过设定某种元素在某段时间内的变化实现一些简单的动画效果，让某些效果变得更加具有流线性与平滑性。CSS3的“动画”（animation）属性能够实现更复杂的样式变化以及一些交互效果，而不需要使用任何Flash或JavaScript脚本代码。过渡与动画的出现，使CSS在Web前端开发中不再仅仅局限于简单的静态内容展示，而是通过简单的方法使页面元素动了起来，实现了元素从静到动的变化。</p>
+            <p><strong>7、Web字体</strong></p>
+            <p>CSS3中引入了@font-face，@font-face是链接服务器字体的一种方式，这些嵌入的字体能变成浏览器的安全字体，开发人员不用再担心用户没有这些字体而导致网页在用户浏览器无法正常显示的问题。</p>
+            <p><strong>8、媒体查询</strong></p>
+            <p>CSS3中引入媒体查询（mediaqueries），可为不同分辨率的设备定义不同的样式。比如，在可视区域小于480像素时，可能想让原来在右侧的网站侧栏显示在主内容的下边，以往必须通过JavaScript判断用户浏览器的分辨率，然后再通过JavaScript修改CSS。CSS3中只需要通过媒体查询就可实现上述操作。</p>
+            <p><strong>9、阴影</strong></p>
+            <p>阴影主要分为两种：文本阴影（text-shadow）和盒子阴影（box-shadow）。文本阴影在CSS2中已经存在，但没有得到广泛的运用（CSS2.1中删除了）。CSS3延续了这个特性，并进行了新的定义，该属性提供了一种新的跨浏览器解决方案，使文本看起来更加醒目。CSS3中的盒子阴影的引入，可轻易地为任何元素添加盒子阴影。</p>
+            <h4>三、兼容问题</h4>
+            <p>浏览器厂商以前就一直在实施CSS3，虽然它还未成为真正的标准，但却提供了针对浏览器的前缀：</p>
+            <p>Chrome（谷歌浏览器）：-webkit-</p>
+            <p>Safari（苹果浏览器）：-webkit-</p>
+            <p>Firefox（火狐浏览器）：-moz-</p>
+            <p>lE（IE浏览器）：-ms-</p>
+            <p>Opera（欧朋浏览器）：-O-</p>
+           </div>
+           <div class="tab-pane fade pt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="col mb-3">
+             <div class="card shadow-sm card-ib"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化" class="img-left">
+               <div class="imgscale blogpic"><img src="../downloadFile/20210903111545779.jpg" alt="Bootstrap幻灯片组件的使用和美化">
+               </div></a>
+              <div class="card-body card-body-fr">
+               <p class="h4"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化">Bootstrap幻灯片组件的使用和美化</a></p>
+               <p class="card-text">Bootstrap的Carousel组件是一个幻灯片，用于循环浏览一系列内容，使用 CSS 3D 转换和一些 JavaScript 构建。它适用于一系列图像、文本或自定义标记。</p>
+               <p class="card-text"><i class="bi bi-book"></i>&nbsp;<a href="../list/5.html" class="text-primary">Bootstrap</a>&nbsp; <i class="bi bi-stopwatch"></i>&nbsp;2021-08-30 23:07:16 <a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化" class="btn btn-primary btn-sm fr-a"><i class="bi bi-cursor"></i>&nbsp;阅读更多</a></p>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../info/10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+   </div>
+  </main>
+ </body>
+</html>

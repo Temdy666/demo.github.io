@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>友情链接</title>
+  <meta name="keywords" content="DJB-Blog,Java程序员,JavaWeb,Springboot,SpringMVC,前端开发,HTML5,CSS3">
+  <meta name="description" content="DJB-Blog一个技术分享博客，专门分享站长在学习过程遇到的一些坑、写的一些功能代码和实用案例，方便初学者快速掌握相关知识。。。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="client/images/favicon.ico">
+  <link rel="stylesheet" href="client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="client/css/style.css" media="all">
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="index.html">首页</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">友情链接</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body">
+          <ul class="links-list mb-0">
+           <li><a href="https://djb-blog.com" target="_blank" title="DJB-Blog">DJB-Blog</a></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-plus-square-dotted"></i>&nbsp;申请友情链接</small></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body border-bottom">
+          <div class="mb-3"><label for="siteName" class="form-label">站点名称</label> <input type="text" class="form-control" id="siteName" placeholder="请输入您的站点名称">
+          </div>
+          <div class="mb-3"><label for="url" class="form-label">站点链接</label> <input type="text" class="form-control" id="url" placeholder="请输入您的用户名">
+          </div><span class="btn btn-danger" onclick="addLink()">提交</span>
+         </div>
+         <div class="card-body border-bottom">
+          <div class="share">
+           <b style="color: red;">注意事情：</b><br>
+            提交之前把先本站的链接添加到贵站的首页友情链接模块，然后再填写信息提交，提交过程中系统会自动检测目标站点是否已经添加本站链接，如果检测通过，系统就自动添加成功，否则会无法提交！ <br>
+           本站点友情链接信息如下： <br>
+           1、名称：DJB-Blog <br>
+           2、链接：<a href="https://djb-blog.com" title="DJB-Blog">https://djb-blog.com</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </main><!--引入底部模板-->
+  <footer>
+   <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+    <div class="top"></div></a>
+  </footer>
+  <script type="text/javascript" src="client/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="client/js/jquery.js"></script>
+  <script type="text/javascript" src="client/js/public.js"></script>
+ </body>
+</html>

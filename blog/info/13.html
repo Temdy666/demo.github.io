@@ -1,0 +1,369 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>javafx GridPane 响应式布局 javafx布局详解</title>
+  <meta name="keywords" content="Java,javaFx">
+  <meta name="description" content="javafx GridPane 响应式布局 javafx布局详解，基本:舞台(Stage)、场景(Scene)舞台和场景绑定布局中可以放多个控件以及布局一、布局:Pane流式布局:FlowPane一行排列填满自动转到下一行边框布局。。。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../client/images/favicon.ico">
+  <link rel="stylesheet" href="../client/css/bootstrap.min.css" media="all">
+  <link rel="stylesheet" href="../client/css/bootstrap-icons.css" media="all">
+  <link rel="stylesheet" href="../client/css/style.css" media="all">
+  <link rel="stylesheet" href="../client/css/prism.css" media="all">
+  <script type="text/javascript" src="../client/js/prism.js"></script>
+  <style>
+			@media screen and (max-width:640px) {
+				p img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+ </head>
+ <body><!--引入头部导航模板-->
+  <header>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Ninth navbar example">
+    <div class="container-xl"><a class="navbar-brand" href="../index.html"><strong>DJB-Blog</strong></a> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+     <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       <li class="nav-item p15"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i>&nbsp;首页</a></li>
+       <li class="nav-item p15"><a class="nav-link  active" href="../list/0.html"><i class="bi bi-file-earmark-medical"></i>&nbsp;技术分享</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../tags.html"><i class="bi bi-tags"></i>&nbsp;标签</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../archive.html"><i class="bi bi-folder2"></i>&nbsp;文章归档</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../links.html"><i class="bi bi-link-45deg"></i>&nbsp;友情链接</a></li>
+       <li class="nav-item p15"><a class="nav-link" href="../message.html"><i class="bi bi-chat-quote"></i>&nbsp;在线留言</a></li>
+      </ul>
+      <form id="searchForm" action="/seach" method="post" onsubmit="return checkOut(this)">
+       <div class="input-group"><input id="name" name="name" class="form-control form-control-sm" type="text"> <button type="submit" class="input-group-text"><i class="bi bi-search"></i></button>
+       </div>
+      </form>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <main>
+   <div class="album py-5 bg-light">
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-8">
+       <div class="page-header mt-2">
+        <h4>
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+           <li class="breadcrumb-item h6"><a href="../index.html">首页</a></li>
+           <li class="breadcrumb-item h6"><a href="../list/0.html">技术分享</a></li>
+           <li class="breadcrumb-item h6 active" aria-current="page">文章详细</li>
+          </ol>
+         </nav></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body mt-2"><input type="hidden" name="articleId" id="articleId" value="13"> <input type="hidden" name="title" id="title" value="javafx GridPane 响应式布局 javafx布局详解">
+          <p class="h4">javafx GridPane 响应式布局 javafx布局详解</p>
+          <p class="bloginfo"><i class="avatar"><img src="../client/images/t8.png"></i> <span>Temdy</span> <span>2024-01-10 17:10:49</span> <span>【<a href="../list/9.html" target="_blank">javaFx</a>】</span> <span>105人已围观</span></p>
+          <p class="card-text t_c1"></p>
+          <p><span style="text-wrap: nowrap;">基本:舞台(Stage)、场景(Scene)</span></p>
+          <p><span style="text-wrap: nowrap;">舞台和场景绑定布局中可以放多个控件以及布局</span></p>
+          <p><strong><span style="text-wrap: nowrap;">一、布局:Pane</span></strong></p>
+          <p><span style="text-wrap: nowrap;">流式布局:FlowPane&nbsp; 一行排列填满自动转到下一行</span></p>
+          <p><span style="text-wrap: nowrap;">边框布局:BorderPane&nbsp; 分上中下左右五个区域，每个区域只能有一个节点</span></p>
+          <p><span style="text-wrap: nowrap;">网格布局:GridPane&nbsp; 分列和行 梳着是列横着是行 绑定控件和布局需要指定位置 位置从0开始</span></p>
+          <p><span style="text-wrap: nowrap;">水平布局:HBox&nbsp; 横着排列&nbsp; 填满自动换到下一行</span></p>
+          <p><span style="text-wrap: nowrap;">垂直布局:VBox&nbsp; &nbsp; &nbsp; 梳着排列</span></p>
+          <p><span style="text-wrap: nowrap;">分割面板(分割布局): SplitPane 与边框布局不同,这个布局的方向只能是水平的或者是垂直的,</span></p>
+          <p><span style="text-wrap: nowrap;">可以放入多个控件或者布局,会为每个控件生成一个分割条,</span></p>
+          <p><span style="text-wrap: nowrap;">我们可以通过拉动他来改变控件或者布局占据的空间大小</span></p>
+          <p><span style="text-wrap: nowrap;">分割面板设置</span></p>
+          <p><span style="text-wrap: nowrap;">分割面板中有多条分割线使用这个方法调整每根分割线的占比</span></p>
+          <p><span style="text-wrap: nowrap;">splitPane.setDividerPositions(0.06);&nbsp; &nbsp;不懂就慢慢调整数字</span></p>
+          <p><span style="text-wrap: nowrap;">分割面板默认是水平分排列 需要改为垂直排列</span></p>
+          <p><span style="text-wrap: nowrap;">splitPane.setOrientation(Orientation.VERTICAL)&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><span style="text-wrap: nowrap;">标题面板(布局):TitledPane&nbsp; &nbsp; 面板具备对应的标题,可以用来放商品的名字,具备折叠功能,</span></p>
+          <p><span style="text-wrap: nowrap;">可以让页面看上去不是那么拥挤,点开折叠则可以查看商品内容与操作</span></p>
+          <p><span style="text-wrap: nowrap;">设置面板大小</span></p>
+          <p><span style="text-wrap: nowrap;">titledPane.setPrefWidth(600-20);</span></p>
+          <p><span style="text-wrap: nowrap;">设置面板标题</span></p>
+          <p><span style="text-wrap: nowrap;">titledPane.setText("标题名");</span></p>
+          <p><span style="text-wrap: nowrap;">设置面板是否展开</span></p>
+          <p><span style="text-wrap: nowrap;">titledPane.setExpanded(false);</span></p>
+          <p><span style="text-wrap: nowrap;">设置面板是否可以折叠</span></p>
+          <p><span style="text-wrap: nowrap;">titledPane.setCollapsible(true);&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">滚动面板(布局):ScrollPane&nbsp; 数据多了之后可以滑动 创建的时候将可能列数过多的布局丢在参数里</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><strong><span style="text-wrap: nowrap;">二、控件</span></strong></p>
+          <p><span style="text-wrap: nowrap;">文本标签:Label&nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">文本输入框:TextField&nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">取值方法:</span></p>
+          <p><span style="text-wrap: nowrap;">String A = textField .getText();&nbsp; //String接收</span></p>
+          <p><span style="text-wrap: nowrap;">密码输入框:PasswordField&nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">取值方法:</span></p>
+          <p><span style="text-wrap: nowrap;">String mm = passwordField.getText();&nbsp; //String接收</span></p>
+          <p><span style="text-wrap: nowrap;">按钮:Button&nbsp; 按钮点击事件setOnAction(a-&amp;gt;{});</span></p>
+          <p><span style="text-wrap: nowrap;">对于多选框和单选框,都可以通过 setSelected(boolean) 来设置选中状态,通过 isSelected() 来获取选中状态</span></p>
+          <p><span style="text-wrap: nowrap;">单选框:RadioButton</span></p>
+          <p><span style="text-wrap: nowrap;">性别单选框</span></p>
+          <p><span style="text-wrap: nowrap;">RadioButton r1 = new RadioButton("男");</span></p>
+          <p><span style="text-wrap: nowrap;">RadioButton r2 = new RadioButton("女");</span></p>
+          <p><span style="text-wrap: nowrap;">这样的单选框是无法实现单选功能的,只有当单选按钮在一组的时候才能完成单选功能</span></p>
+          <p><span style="text-wrap: nowrap;">ToggleGroup group = new ToggleGroup();//构建单选按钮组</span></p>
+          <p><span style="text-wrap: nowrap;">设置两个单选框在同一组</span></p>
+          <p><span style="text-wrap: nowrap;">r1.setToggleGroup(group);</span></p>
+          <p><span style="text-wrap: nowrap;">r2.setToggleGroup(group);</span></p>
+          <p><span style="text-wrap: nowrap;">默认选中男</span></p>
+          <p><span style="text-wrap: nowrap;">r1.setSelected(true);</span></p>
+          <p><span style="text-wrap: nowrap;">获取单选框的值</span></p>
+          <p><span style="text-wrap: nowrap;">String sex = "男";//设置性别默认为男</span></p>
+          <p><span style="text-wrap: nowrap;">if(r2.isSelected()) {</span></p>
+          <p><span style="text-wrap: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;sex = r2.getText();//如果选中女的单选框就赋值为女</span></p>
+          <p><span style="text-wrap: nowrap;">}&nbsp; &nbsp; 多选框:CheckBox</span></p>
+          <p><span style="text-wrap: nowrap;">赋值：</span></p>
+          <p><span style="text-wrap: nowrap;">在创建对象时赋值 放参数里面</span></p>
+          <p><span style="text-wrap: nowrap;">获取多选框选中的值:</span></p>
+          <p><span style="text-wrap: nowrap;">需要用到字符串连接器:StringJoiner</span></p>
+          <p><span style="text-wrap: nowrap;">StringJoiner joiner = new StringJoiner(",");//",号分隔开"</span></p>
+          <p><span style="text-wrap: nowrap;">通过 isSelected() 来获取选中状态</span></p>
+          <p><span style="text-wrap: nowrap;">if(多选框对象名.isSelected()){</span></p>
+          <p><span style="text-wrap: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;joiner.add(多选框对象名.getText());//如果选中了就把值添加到字符串连接器,以此类推</span></p>
+          <p><span style="text-wrap: nowrap;">}</span></p>
+          <p><span style="text-wrap: nowrap;">将取到的值(用户多选的值)赋值给字符串</span></p>
+          <p><span style="text-wrap: nowrap;">String A = joiner.toString();&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><span style="text-wrap: nowrap;">下拉框:ChoiceBox&amp;lt;类型&amp;gt;&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">给下拉框设置选项:Item</span></p>
+          <p><span style="text-wrap: nowrap;">choiceBox.getItems().addAll("湖南","湖北","河南","河北");//add(添加单个)、addAll(添加多个或集合)</span></p>
+          <p><span style="text-wrap: nowrap;">设置默认值：Value&nbsp; 只能设置已有的值</span></p>
+          <p><span style="text-wrap: nowrap;">choiceBox.setValue("湖南");</span></p>
+          <p><span style="text-wrap: nowrap;">获取下拉框选中的值:</span></p>
+          <p><span style="text-wrap: nowrap;">String A = choiceBox.getValue();//String接收</span></p>
+          <p><span style="text-wrap: nowrap;">下拉框可能存在多个属性数据只取其中某个数据通过转换器获取</span></p>
+          <p><span style="text-wrap: nowrap;">choiceBoxset.Converter(new StringConverter&amp;lt;数据类型&amp;gt;() {</span></p>
+          <p><span style="text-wrap: nowrap;">创建转换器要重写它的两个方法 我们只需要用到toString方法修改返回的值即可</span></p>
+          <p><span style="text-wrap: nowrap;">public String toString(数据类型 A) {</span></p>
+          <p><span style="text-wrap: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;return A.get要取的值();</span></p>
+          <p><span style="text-wrap: nowrap;">}</span></p>
+          <p><span style="text-wrap: nowrap;">public 数据类型 fromString(String string) {</span></p>
+          <p><span style="text-wrap: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;return null;</span></p>
+          <p><span style="text-wrap: nowrap;">}</span></p>
+          <p><span style="text-wrap: nowrap;">});&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">滑动条:Slider</span></p>
+          <p><span style="text-wrap: nowrap;">给滑动条设置数据&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">v3.setMajorTickUnit(8);//刻度间隙为8&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">v3.setMinorTickCount(2);//每次滑动为2&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">v3.setShowTickMarks(true);//是否出现刻度&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">v3.setShowTickLabels(true);//是否出现数字</span></p>
+          <p><span style="text-wrap: nowrap;">获取滑动条的值:</span></p>
+          <p><span style="text-wrap: nowrap;">double A = slider.getValue();//小数或整数接收&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 文本域:TextArea</span></p>
+          <p><span style="text-wrap: nowrap;">给文本域设置大小</span></p>
+          <p><span style="text-wrap: nowrap;">textArea.setMaxSize(300, 150);</span></p>
+          <p><span style="text-wrap: nowrap;">获取文本域中的值:</span></p>
+          <p><span style="text-wrap: nowrap;">String A = textArea.getText();//String接收&nbsp; &nbsp; 文件选择器:FileChooser</span></p>
+          <p><span style="text-wrap: nowrap;">定义文件后缀名过滤器</span></p>
+          <p><span style="text-wrap: nowrap;">ExtensionFilter filter = new ExtensionFilter("image",new String[] {"*.jpg","*.png"});</span></p>
+          <p><span style="text-wrap: nowrap;">File 文件</span></p>
+          <p><span style="text-wrap: nowrap;">FileChooser fc = new FileChooser();</span></p>
+          <p><span style="text-wrap: nowrap;">添加扩展名过滤器</span></p>
+          <p><span style="text-wrap: nowrap;">fc.getExtensionFilters().add(filter);</span></p>
+          <p><span style="text-wrap: nowrap;">打开一个文件选择器返回一个文件</span></p>
+          <p><span style="text-wrap: nowrap;">File file = fc.showOpenDialog(null);</span></p>
+          <p><span style="text-wrap: nowrap;">if(file==null) {//判断是否为空</span></p>
+          <p><span style="text-wrap: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;return;//为空中断代码</span></p>
+          <p><span style="text-wrap: nowrap;">}</span></p>
+          <p><span style="text-wrap: nowrap;">接收选择的文件的路径:</span></p>
+          <p><span style="text-wrap: nowrap;">//Absolute 绝对,Path 路径</span></p>
+          <p><span style="text-wrap: nowrap;">String path = file.getAbsolutePath();//String接收&nbsp; &nbsp; 日期选择器:DatePicker</span></p>
+          <p><span style="text-wrap: nowrap;">时间createTime</span></p>
+          <p><span style="text-wrap: nowrap;">数据库只能添加java.sql.Date类型的时间</span></p>
+          <p><span style="text-wrap: nowrap;">LocalDate d = datePicker.getValue();</span></p>
+          <p><span style="text-wrap: nowrap;">将LocalDate时间变成jav.sql.Date时间</span></p>
+          <p><span style="text-wrap: nowrap;">Date createTime = new Date(//创建对象的同时把时间选择器的值转换成jav.sql.Date时间</span></p>
+          <p><span style="text-wrap: nowrap;">d.getYear()-1900,</span></p>
+          <p><span style="text-wrap: nowrap;">d.getMonthValue()-1,</span></p>
+          <p><span style="text-wrap: nowrap;">d.getDayOfMonth()</span></p>
+          <p><span style="text-wrap: nowrap;">);&nbsp; &nbsp; 菜单按钮:MenuButton&nbsp; 菜单按钮可以绑定菜单项 从而实现下拉功能</span></p>
+          <p><span style="text-wrap: nowrap;">菜单栏</span></p>
+          <p><span style="text-wrap: nowrap;">MenuButton b1 = new MenuButton("商品管理");</span></p>
+          <p><span style="text-wrap: nowrap;">MenuButton b2 = new MenuButton("类别管理");&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">菜单 b1 的菜单项</span></p>
+          <p><span style="text-wrap: nowrap;">MenuItem t1 = new MenuItem("商品新增");</span></p>
+          <p><span style="text-wrap: nowrap;">MenuItem t2 = new MenuItem("商品删除");&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">菜单 b2 的菜单项</span></p>
+          <p><span style="text-wrap: nowrap;">MenuItem t3 = new MenuItem("类别新增");</span></p>
+          <p><span style="text-wrap: nowrap;">MenuItem t4 = new MenuItem("类别删除");</span></p>
+          <p><span style="text-wrap: nowrap;">将菜单与菜单项进行绑定</span></p>
+          <p><span style="text-wrap: nowrap;">b1.getItems().add(t1);</span></p>
+          <p><span style="text-wrap: nowrap;">b1.getItems().add(t2);</span></p>
+          <p><span style="text-wrap: nowrap;">b2.getItems().add(t3);</span></p>
+          <p><span style="text-wrap: nowrap;">b2.getItems().add(t4);</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><span style="text-wrap: nowrap;">工具栏:ToolBar&nbsp; 工具栏中可以直接放入组件 也就是说 Button , ChoiseBox 等控件都可以直接放</span></p>
+          <p><span style="text-wrap: nowrap;">创建工具栏 在参数里对菜单进行绑定</span></p>
+          <p><span style="text-wrap: nowrap;">ToolBar barCtl = new ToolBar(b1, b2);&nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><strong><span style="text-wrap: nowrap;">三、常用的一些方法</span></strong></p>
+          <p><span style="text-wrap: nowrap;">布局设置居中以及间隔方法</span></p>
+          <p><span style="text-wrap: nowrap;">设置居中方式</span></p>
+          <p><span style="text-wrap: nowrap;">gridPane.setAlignment(Pos.CENTER);</span></p>
+          <p><span style="text-wrap: nowrap;">设置居中方式</span></p>
+          <p><span style="text-wrap: nowrap;">布局名.setAlignment(Pos.CENTER);</span></p>
+          <p><span style="text-wrap: nowrap;">Pos 类中定义了一些居中方式</span></p>
+          <p><span style="text-wrap: nowrap;">TOP_LEFT 左上</span></p>
+          <p><span style="text-wrap: nowrap;">TOP_CENTER 居上</span></p>
+          <p><span style="text-wrap: nowrap;">TOP_RIGHT 右上</span></p>
+          <p><span style="text-wrap: nowrap;">CENTER_LEFT 居左</span></p>
+          <p><span style="text-wrap: nowrap;">CENTER 居中</span></p>
+          <p><span style="text-wrap: nowrap;">CENTER_RIGHT 居右</span></p>
+          <p><span style="text-wrap: nowrap;">BOTTOM_LEFT 左下</span></p>
+          <p><span style="text-wrap: nowrap;">BOTTOM_CENTER 居下</span></p>
+          <p><span style="text-wrap: nowrap;">BOTTOM_RIGHT 右下</span></p>
+          <p><span style="text-wrap: nowrap;">两个格子之间的水平距离</span></p>
+          <p><span style="text-wrap: nowrap;">gridPane.setHgap(10);</span></p>
+          <p><span style="text-wrap: nowrap;">两个各自之间的垂直距离</span></p>
+          <p><span style="text-wrap: nowrap;">gridPane.setVgap(10);</span></p>
+          <p><span style="text-wrap: nowrap;"><br></span></p>
+          <p><span style="text-wrap: nowrap;">界面添加图片:</span></p>
+          <p><span style="text-wrap: nowrap;">primaryStage.getIcons().add(new Image("file:图片地址\\图片名.类型"));</span></p>
+          <p><span style="text-wrap: nowrap;">控件添加图片：</span></p>
+          <p><span style="text-wrap: nowrap;">创建控件时在参数中添加:(new Image("file:图片地址\\图片名.类型"));表格控件(表格视图) TableView:</span></p>
+          <p><span style="text-wrap: nowrap;">创建表格控件对象:</span></p>
+          <p><span style="text-wrap: nowrap;">这个地方一定要指定类型</span></p>
+          <p><span style="text-wrap: nowrap;">TableView&amp;lt;Student&amp;gt; table = new TableView&amp;lt;Student&amp;gt;();//&amp;lt;&amp;gt;里面为数据类型</span></p>
+          <p><span style="text-wrap: nowrap;">为表格设置列 TableColumn</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn&amp;lt;数据类型, 数据类型&amp;gt; c1 = new TableColumn("学生编号");</span></p>
+          <p><span style="text-wrap: nowrap;">//前面的数据类型为Student类,后面的为最后的数据对应的数据类型(String/Integer) 注意Student类也要为Integer类型</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn c2 = new TableColumn("学生名字");&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn c3 = new TableColumn("学生密码");</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn c4 = new TableColumn("学生性别");</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn c5 = new TableColumn("学生地址");</span></p>
+          <p><span style="text-wrap: nowrap;">TableColumn c6 = new TableColumn("学生爱好");</span></p>
+          <p><span style="text-wrap: nowrap;">将列绑定到表格控件中</span></p>
+          <p><span style="text-wrap: nowrap;">table.getColumns().addAll(c1, c2, c3, c4, c5, c6)</span></p>
+          <p><span style="text-wrap: nowrap;">绑定学生类对应的属性</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的id属性绑定到第一列</span></p>
+          <p><span style="text-wrap: nowrap;">c1.setCellValueFactory(new PropertyValueFactory("id"));</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的name属性绑定到第二列</span></p>
+          <p><span style="text-wrap: nowrap;">c2.setCellValueFactory(new PropertyValueFactory("name"));</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的password属性绑定到第三列</span></p>
+          <p><span style="text-wrap: nowrap;">c3.setCellValueFactory(new PropertyValueFactory("password"));</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的gender属性绑定到第四列</span></p>
+          <p><span style="text-wrap: nowrap;">c4.setCellValueFactory(new PropertyValueFactory("gender"));</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的address属性绑定到第五列</span></p>
+          <p><span style="text-wrap: nowrap;">c5.setCellValueFactory(new PropertyValueFactory("address"));</span></p>
+          <p><span style="text-wrap: nowrap;">将学生的hobby属性绑定到第六列</span></p>
+          <p><span style="text-wrap: nowrap;">c6.setCellValueFactory(new PropertyValueFactory("hobby"));</span></p>
+          <p><span style="text-wrap: nowrap;">将数据库中的值放到表中</span></p>
+          <p><span style="text-wrap: nowrap;">创建集合接收数据中查询到的值</span></p>
+          <p><span style="text-wrap: nowrap;">List&amp;lt;Student&amp;gt; list = studao.all();//all方法要是有参的话记得给参数</span></p>
+          <p><span style="text-wrap: nowrap;">将查询到的集合方法表中:add()添加单个、addAll()添加多个或集合</span></p>
+          <p><span style="text-wrap: nowrap;">table.getItems().addAll(list);</span></p>
+          <p></p>
+          <p class="text-center"><span class="btn btn-danger" id="greatBtn" onclick="great()">很赞哦！ (1)</span></p>
+          <div>
+           <p>上一篇：<a href="12.html" target="_blank" title="Thymeleaf唯一标签th:block的用法和使用场景">Thymeleaf唯一标签th:block的用法和使用场景</a></p>
+           <p>下一篇：没有数据</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-command"></i>&nbsp;相关文章</small></h4>
+       </div>
+       <ul class="list-group mb-2" style="margin-left: 0; width: 100%;">
+        <li class="list-group-item link-a"><a href="info/13.html" title="javafx GridPane 响应式布局 javafx布局详解"><i class="bi bi-caret-right"></i>javafx GridPane 响应式布局 javafx布局详解</a></li>
+       </ul>
+       <div class="page-header my-2">
+        <h4><small><i class="bi bi-pencil-square"></i>&nbsp;文章评论</small></h4>
+       </div>
+       <div class="col mb-3 mt-2">
+        <div class="card shadow-sm">
+         <div class="card-body border-bottom">
+          <div class="mb-3"><label for="userName" class="form-label">用户名</label> <input type="text" class="form-control" id="userName" placeholder="请输入您的用户名">
+          </div>
+          <div class="mb-3"><label for="content" class="form-label">评论内容</label> <textarea class="form-control" id="content" rows="3" placeholder="请写下您想评论的内容"></textarea>
+          </div><span class="btn btn-danger" onclick="relpy()">提交</span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-sm-4"><!--引入右侧3大模块模板（包括了栏目分类、点击排行和站长推荐）-->
+       <div class="row m-lg-1">
+        <div class="page-header m-0">
+         <h4><small><i class="bi bi-book"></i>&nbsp;栏目分类</small></h4>
+        </div>
+        <ul class="list-group mb-2 l-a">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/1.html" title="Spring-boot"><i class="bi bi-terminal-fill"></i>&nbsp;Spring-boot</a> <span class="badge bg-primary rounded-pill">5</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/2.html" title="MyBatis-Plus"><i class="bi bi-twitter"></i>&nbsp;MyBatis-Plus</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/3.html" title="Thymeleaf"><i class="bi bi-file-font-fill"></i>&nbsp;Thymeleaf</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/4.html" title="Mysql"><i class="bi bi-server"></i>&nbsp;Mysql</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/5.html" title="Bootstrap"><i class="bi bi-bootstrap"></i>&nbsp;Bootstrap</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/6.html" title="Spring-security"><i class="bi bi-shield-shaded"></i>&nbsp;Spring-security</a> <span class="badge bg-primary rounded-pill">0</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/7.html" title="Java Code"><i class="bi bi-braces"></i>&nbsp;Java Code</a> <span class="badge bg-primary rounded-pill">3</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/8.html" title="Linux"><i class="bi bi-tv"></i>&nbsp;Linux</a> <span class="badge bg-primary rounded-pill">1</span></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="../list/9.html" title="javaFx"><i class="bi bi-life-preserver"></i>&nbsp;javaFx</a> <span class="badge bg-primary rounded-pill">1</span></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-index-thumb"></i>&nbsp;点击排行</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="12.html" title="Thymeleaf唯一标签th:block的用法和使用场景"><span class="badge rounded-pill">1</span>&nbsp;Thymeleaf唯一标签th:block的用法和使用场景</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">2</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">3</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">4</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">5</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">8</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="11.html" title="Jsoup实现根据ip获取国家和城市信息"><span class="badge rounded-pill">9</span>&nbsp;Jsoup实现根据ip获取国家和城市信息</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">10</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+        </ul>
+        <div class="page-header my-2">
+         <h4><small><i class="bi bi-hand-thumbs-up"></i>&nbsp;站长推荐</small></h4>
+        </div>
+        <ul class="list-group mb-2">
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="2.html" title="我的第一个Springboot程序之HelloWord"><span class="badge rounded-pill">1</span>&nbsp;我的第一个Springboot程序之HelloWord</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="3.html" title="Springboot程序HelloWord的404错误问题"><span class="badge rounded-pill">2</span>&nbsp;Springboot程序HelloWord的404错误问题</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="1.html" title="DJB-Blog我的个人博客终于上线了"><span class="badge rounded-pill">3</span>&nbsp;DJB-Blog我的个人博客终于上线了</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="5.html" title="UEditor富文本编辑器集成PrismJS代码高亮插件"><span class="badge rounded-pill">4</span>&nbsp;UEditor富文本编辑器集成PrismJS代码高亮插件</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="6.html" title="Bootstrap幻灯片组件的使用和美化"><span class="badge rounded-pill">5</span>&nbsp;Bootstrap幻灯片组件的使用和美化</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="7.html" title="Files.walkFileTree()遍历目录文件输出树结构数据"><span class="badge rounded-pill">6</span>&nbsp;Files.walkFileTree()遍历目录文件输出树结构数据</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="4.html" title="Springboot集成Thymeleaf模板引擎"><span class="badge rounded-pill">7</span>&nbsp;Springboot集成Thymeleaf模板引擎</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="8.html" title="Springboot集成MyBatis-Plus使用的快感"><span class="badge rounded-pill">8</span>&nbsp;Springboot集成MyBatis-Plus使用的快感</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="9.html" title="Linux中Nginx使用if判断语句踩的坑"><span class="badge rounded-pill">9</span>&nbsp;Linux中Nginx使用if判断语句踩的坑</a></li>
+         <li class="list-group-item d-flex justify-content-between align-items-center"><a href="10.html" title="MyBatis-Plus使用QueryWrapper实现文章归档"><span class="badge rounded-pill">10</span>&nbsp;MyBatis-Plus使用QueryWrapper实现文章归档</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div> <!--引入底部模板-->
+    <footer>
+     <p>Copyright © <a href="https://djb-blog.com" title="DJB-Blog | 一个技术分享博客" style="color:#ffffff">DJB-Blog</a> All Rights Reserved.</p><a href="#">
+      <div class="top"></div></a>
+    </footer>
+    <script type="text/javascript" src="../client/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../client/js/jquery.js"></script>
+    <script type="text/javascript" src="../client/js/public.js"></script>
+    <script type="text/javascript">
+		//监听整个页面的 copy 事件
+		document.addEventListener('copy',function(e){
+			// clipboardData 对象是为通过编辑菜单、快捷菜单和快捷键执行的编辑操作所保留的，也就是你复制或者剪切内容
+			let clipboardData = e.clipboardData || window.clipboardData;
+			// 如果 未复制或者未剪切，直接 return
+			if(!clipboardData) return ;
+			// Selection 对象 表示用户选择的文本范围或光标的当前位置。
+			// 声明一个变量接收 -- 用户输入的剪切或者复制的文本转化为字符串
+			let text = window.getSelection().toString();
+			if(text){
+				// 如果文本存在，首先取消默认行为
+				e.preventDefault();
+				// 通过调用 clipboardData 对象的 setData(format,data) 方法，设置相关文本
+				// format 一个 DOMString 类型 表示要添加到 drag object 的拖动数据的类型
+				// data 一个 DOMString 表示要添加到 drag object 的数据
+				clipboardData.setData('text/plain', text + '\r\n\r\n版权声明：本文为DJB-Blog博客的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：'+document.location.href);
+			}
+		})
+	</script>
+   </div>
+  </main>
+ </body>
+</html>
